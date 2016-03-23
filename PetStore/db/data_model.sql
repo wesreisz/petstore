@@ -1,0 +1,47 @@
+﻿/****** Object:  Table [dbo].[AnimalType]    Script Date: 3/22/2016 6:49:32 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[AnimalType](
+	[AnimalTypeCD] [varchar](2) NOT NULL,
+	[AnimalTypeName] [varchar](50) NOT NULL,
+	[AnimalTypeDescription] [varchar](3000) NOT NULL,
+ CONSTRAINT [PK_AnimalType] PRIMARY KEY CLUSTERED 
+(
+	[AnimalTypeCD] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[Pet]    Script Date: 3/22/2016 6:49:32 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[Pet](
+	[PetID] [numeric](18, 0) NOT NULL,
+	[PetName] [varchar](100) NOT NULL,
+	[PetDescription] [varchar](3000) NOT NULL,
+	[create_dt] [datetime] NOT NULL,
+	[AnimalTypeCD] [varchar](2) NOT NULL,
+ CONSTRAINT [PK_Pet] PRIMARY KEY CLUSTERED 
+(
+	[PetID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+ALTER TABLE [dbo].[Pet]  WITH CHECK ADD  CONSTRAINT [FK_Pet_AnimalType] FOREIGN KEY([AnimalTypeCD])
+REFERENCES [dbo].[AnimalType] ([AnimalTypeCD])
+GO
+ALTER TABLE [dbo].[Pet] CHECK CONSTRAINT [FK_Pet_AnimalType]
+GO

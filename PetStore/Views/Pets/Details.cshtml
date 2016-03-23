@@ -1,0 +1,50 @@
+﻿@model PetStore.DataModel.Pet
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Pet</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PetName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PetName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PetDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PetDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.create_dt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.create_dt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AnimalType.AnimalTypeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AnimalType.AnimalTypeName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PetID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
